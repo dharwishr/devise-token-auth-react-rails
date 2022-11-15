@@ -19,6 +19,11 @@ gem 'rack-cors'
 
 gem 'devise_invitable', '~> 2.0.0'
 
+# For compiling and bundling JavaScript. Read more: https://github.com/rails/webpacker
+gem "webpacker"
+
+gem 'react-rails'
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
