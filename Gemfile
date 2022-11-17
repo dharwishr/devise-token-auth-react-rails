@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -15,14 +17,14 @@ gem "devise_token_auth"
 
 gem "pgcrypto"
 
-gem 'rack-cors'
+gem "rack-cors"
 
-gem 'devise_invitable', '~> 2.0.0'
+gem "devise_invitable", "~> 2.0.0"
 
 # For compiling and bundling JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker"
 
-gem 'react-rails'
+gem "react-rails"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -66,11 +68,17 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem "byebug"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  gem "rubocop"
+
+  gem "rubocop-rails"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
