@@ -25,10 +25,10 @@ class Users::InvitationsController < Devise::InvitationsController
   def update
     @user = User.accept_invitation!(accept_invitation_params)
     if @user.errors.empty?
-      render json: { success: ["User updated."] }, status: :accepted
+      respond_with_success(t("successfully_updated", entity: "User"))
     else
-      render json: { errors: @user.errors.full_messages },
-        status: :unprocessable_entity
+      puts @user.errors.to_json
+      respond_with_error(@user.errors.to_json)
     end
   end
 

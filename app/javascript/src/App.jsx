@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
@@ -39,7 +41,17 @@ const App = () => {
   }, []);
 
   if (loading) {
-    return <div className="h-screen">{/* <PageLoader /> */}</div>;
+    return (
+      <div className="h-screen">
+        {" "}
+        <Backdrop
+          open={loading}
+          sx={{ color: "#fff", zIndex: theme => theme.zIndex.drawer + 1 }}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </div>
+    );
   }
 
   return (

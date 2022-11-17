@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import { useLocation } from "react-router-dom";
 
 import invitationApi from "apis/invitation";
+import Toastr from "components/Common/Toastr";
 
 const Accept = () => {
   const theme = createTheme({
@@ -30,13 +31,22 @@ const Accept = () => {
   const token = query.get("invitation_token");
   const handleSubmit = async event => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    try {
-      const res = await invitationApi.accept(data);
-    } catch (error) {
-      console.log(error);
+    if (token) {
+      const data = new FormData(event.currentTarget);
+      try {
+        await invitationApi.accept(data);
+        setTimeout(() => (window.location.href = "/"), 1000);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      Toastr.error("Token not found");
     }
   };
+
+  if (!token) {
+    Toastr.error("Invalid token!");
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -87,7 +97,6 @@ const Accept = () => {
             />
             <TextField
               fullWidth
-              required
               id="invitation_token"
               label="invitation_token"
               margin="normal"
