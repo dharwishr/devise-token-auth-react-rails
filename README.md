@@ -25,6 +25,7 @@ gem install mailcatcher
 mailcatcher
 ```
 * ### Go to [http://127.0.0.1:1080](http://127.0.0.1:1080) for getting mails
+### Make sure that open invitation URL in private window or diffrent browser otherwise current authenticated cookies will conflict and redirect to root_path
 ## Technology used :
 * Rails 7.0.1
 * `devise` gem -> (Authentication)
