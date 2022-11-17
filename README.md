@@ -17,6 +17,7 @@ cd devise-token-auth-react-rails
 bundle exec rails server
 ```
 * ### Go to [http://localhost:3000](http://localhost:3000)
+Example User : `david@example.com` or `sam@example.com`, | Password `welcome`
 ## Using Mailcatcher
 ```bash
 gem install mailcatcher
