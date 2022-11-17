@@ -1,24 +1,34 @@
-# README
+# User Authentication using `devise`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
+* ### Ruby on Rails
+* ### PostgreSQL
+* ### Yarn
+* ### [Mailcatcher](https://mailcatcher.me/) (Intercepts Rails mails)
 
-Things you may want to cover:
+## Setup and run
+```bash
+git clone https://github.com/dharwishr/devise-token-auth-react-rails
 
-* Ruby version
+cd devise-token-auth-react-rails
 
-* System dependencies
+./bin/setup
 
-* Configuration
+bundle exec rails server
+```
+* ### Go to [http://localhost:3000](http://localhost:3000)
+## Using Mailcatcher
+```bash
+gem install mailcatcher
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+mailcatcher
+```
+* ### Go to [http://127.0.0.1:1080](http://127.0.0.1:1080) for getting mails
+## Technology used :
+* Rails 7.0.1
+* `devise` gem -> (Authentication)
+* `devise_token_auth` gem -> (Secure authentication using token)
+* `devise_invitable` gem -> (Invitation system on top of Devise)
+* React.js -> (frontend)
+* PostgreSQL -> (Database)
+* Material UI -> (UI)
