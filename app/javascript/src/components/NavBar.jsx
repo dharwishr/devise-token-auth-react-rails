@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
@@ -7,6 +8,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,7 +20,6 @@ import { UserContext } from "contexts/UserContext";
 
 const NavBar = () => {
   const name = useContext(UserContext);
-  const pages = ["Dashboard", "Invite People"];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -52,7 +53,7 @@ const NavBar = () => {
     <AppBar
       position="static"
       sx={{
-        bgcolor: "#5783db",
+        bgcolor: "rgb(17 24 39)",
       }}
     >
       <Container maxWidth="xl">
@@ -101,11 +102,17 @@ const NavBar = () => {
               }}
               onClose={handleCloseNavMenu}
             >
-              {pages.map(page => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link
+                    color="inherit"
+                    href="/invitations/create"
+                    underline="hover"
+                  >
+                    Invite People
+                  </Link>
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -126,25 +133,29 @@ const NavBar = () => {
             Device Auth
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map(page => (
-              <Button
-                key={page}
-                sx={{ my: 2, color: "white", display: "block" }}
-                onClick={handleCloseNavMenu}
+            <Button
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={handleCloseNavMenu}
+            >
+              <Link
+                color="inherit"
+                href="/invitations/create"
+                underline="hover"
               >
-                {page}
-              </Button>
-            ))}
+                Invite People
+              </Link>
+            </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <Button sx={{ p: 0 }} onClick={handleOpenUserMenu}>
-                <Avatar />
                 <Typography
-                  sx={{ textDecoration: "none", color: "#fff", ml: 2 }}
+                  sx={{ textDecoration: "none", color: "#fff", mr: 2 }}
                 >
                   {name}
                 </Typography>
+                <Avatar />
+                <KeyboardArrowDownIcon sx={{ color: "#fff", ml: 1 }} />
               </Button>
             </Tooltip>
             <Menu

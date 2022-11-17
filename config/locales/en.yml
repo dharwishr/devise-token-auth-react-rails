@@ -8,6 +8,7 @@ en:
     user_already_exist: "User already exist!"
     user_already_invited: "User already invited!"
     created: "User invited!"
+    invalid_token: "Invalid token!"
   successfully_created: "%{entity} was successfully created!"
   successfully_updated: "%{entity} was successfully updated!"
   successfully_invited: "%{entity} was successfully invited!"

@@ -21,7 +21,7 @@ const Create = () => {
   };
 
   useEffect(() => {
-    fetchInvitations();
+    // fetchInvitations();
   }, []);
 
   return (

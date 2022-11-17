@@ -1,33 +1,29 @@
-# frozen_string_literal: true
-
 module InvitableMethods
-  extend ActiveSupport::Concern
+    extend ActiveSupport::Concern
 
-  def authenticate_inviter!
-    # use authenticate_user! in before_action
-  end
-
-  def authenticate_user!
-    return if current_user
-
-    render json: {
-      errors: ["Authorized users only."]
-    }, status: :unauthorized
-  end
-
-  def resource_class(m = nil)
-    if m
-      mapping = Devise.mappings[m]
-    else
-      mapping = Devise.mappings[resource_name] || Devise.mappings.values.first
+    def authenticate_inviter!
+      # use authenticate_user! in before_action
     end
-    mapping.to
-  end
 
-  def resource_from_invitation_token
-    @user = User.find_by_invitation_token(params[:invitation_token], true)
-    return if params[:invitation_token] && @user
+    def authenticate_user!
+      return if current_user
+      render json: {
+        errors: ['Authorized users only.']
+      }, status: :unauthorized
+    end
 
-    render json: { errors: ["Invalid token."] }, status: :not_acceptable
+    def resource_class(m = nil)
+      if m
+        mapping = Devise.mappings[m]
+      else
+        mapping = Devise.mappings[resource_name] || Devise.mappings.values.first
+      end
+      mapping.to
+    end
+
+    def resource_from_invitation_token
+      @user = User.find_by_invitation_token(params[:invitation_token], true)
+      return if params[:invitation_token] && @user
+      respond_with_error(t("invitation.invalid_token"))
+    end
   end
-end

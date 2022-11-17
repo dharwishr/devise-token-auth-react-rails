@@ -20,8 +20,8 @@ const Signin = () => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
-      const res = await authApi.signin(data);
-      window.location.href = "/";
+      await authApi.signin(data);
+      setTimeout(() => (window.location.href = "/"), 1000);
     } catch (error) {
       console.log(error);
     }
