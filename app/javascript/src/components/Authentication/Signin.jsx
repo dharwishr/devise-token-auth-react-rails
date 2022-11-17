@@ -23,7 +23,7 @@ const Signin = () => {
       await authApi.signin(data);
       setTimeout(() => (window.location.href = "/"), 1000);
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   };
 

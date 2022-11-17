@@ -27,7 +27,6 @@ class Users::InvitationsController < Devise::InvitationsController
     if @user.errors.empty?
       respond_with_success(t("successfully_updated", entity: "User"))
     else
-      puts @user.errors.to_json
       respond_with_error(@user.errors.to_json)
     end
   end
@@ -39,6 +38,6 @@ class Users::InvitationsController < Devise::InvitationsController
     end
 
     def accept_invitation_params
-      params.permit(:password, :password_confirmation, :invitation_token)
+      params.permit(:password, :password_confirmation, :invitation_token, :name)
     end
 end

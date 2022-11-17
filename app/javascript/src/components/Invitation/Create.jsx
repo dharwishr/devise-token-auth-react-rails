@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
 import invitationApi from "apis/invitation";
 import NavBar from "components/NavBar";
@@ -14,9 +15,9 @@ const Create = () => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
-      const res = await invitationApi.create(data);
+      await invitationApi.create(data);
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   };
 
@@ -27,10 +28,18 @@ const Create = () => {
   return (
     <>
       <NavBar />
-      <Container maxWidth="sm">
+      <Container
+        maxWidth="sm"
+        sx={{
+          mt: 20,
+        }}
+      >
         <CssBaseline />
+        <Typography gutterBottom variant="h5">
+          Invite People
+        </Typography>
         <Box
-          noValidate
+          Validate
           component="form"
           sx={{ mt: 1 }}
           onSubmit={createInvitation}
