@@ -37,7 +37,7 @@ const Accept = () => {
         await invitationApi.accept(data);
         setTimeout(() => (window.location.href = "/"), 1000);
       } catch (error) {
-        console.log(error);
+        logger.error(error);
       }
     } else {
       Toastr.error("Token not found");
@@ -75,6 +75,16 @@ const Accept = () => {
             Accept Invitation
           </Typography>
           <Box Validate component="form" sx={{ mt: 1 }} onSubmit={handleSubmit}>
+            <TextField
+              autoFocus
+              fullWidth
+              required
+              autoComplete="name"
+              id="name"
+              label="Name"
+              margin="normal"
+              name="name"
+            />
             <TextField
               fullWidth
               required

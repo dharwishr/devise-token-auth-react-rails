@@ -42,15 +42,9 @@ const handleErrorResponse = axiosErrorObject => {
     // setTimeout(() => (window.location.href = "/"), 1000);
   }
 
-  if (axiosErrorObject.response?.data?.errors) {
-    Toastr.error(axiosErrorObject.response?.data?.errors.full_messages);
-  }
-
-  if (axiosErrorObject.response?.data?.error) {
-    Toastr.error(
-      axiosErrorObject.response?.data?.error || DEFAULT_ERROR_NOTIFICATION
-    );
-  }
+  Toastr.error(
+    axiosErrorObject.response?.data?.error || DEFAULT_ERROR_NOTIFICATION
+  );
 
   if (axiosErrorObject.response?.status === 423) {
     // window.location.href = "/";

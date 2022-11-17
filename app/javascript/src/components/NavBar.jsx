@@ -42,10 +42,10 @@ const NavBar = () => {
   const handleSignout = async () => {
     try {
       await authApi.signout();
-      // resetAuthTokens();
+      handleCloseUserMenu();
       window.location.href = "/";
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     }
   };
 
@@ -102,17 +102,15 @@ const NavBar = () => {
               }}
               onClose={handleCloseNavMenu}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link
-                    color="inherit"
-                    href="/invitations/create"
-                    underline="hover"
-                  >
-                    Invite People
-                  </Link>
-                </Typography>
-              </MenuItem>
+              <Link
+                color="inherit"
+                href="/invitations/create"
+                underline="hover"
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Invite People</Typography>
+                </MenuItem>
+              </Link>
             </Menu>
           </Box>
           <Typography
@@ -133,18 +131,14 @@ const NavBar = () => {
             Device Auth
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
-              sx={{ my: 2, color: "white", display: "block" }}
-              onClick={handleCloseNavMenu}
-            >
-              <Link
-                color="inherit"
-                href="/invitations/create"
-                underline="hover"
+            <Link color="inherit" href="/invitations/create" underline="hover">
+              <Button
+                sx={{ my: 2, color: "white", display: "block" }}
+                onClick={handleCloseNavMenu}
               >
                 Invite People
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -174,10 +168,8 @@ const NavBar = () => {
               }}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" onClick={() => handleSignout()}>
-                  Signout
-                </Typography>
+              <MenuItem onClick={() => handleSignout()}>
+                <Typography textAlign="center">Signout</Typography>
               </MenuItem>
             </Menu>
           </Box>

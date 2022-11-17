@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 
 import authApi from "apis/auth";
 import { registerIntercepts, setAuthHeaders } from "apis/axios";
+import { initializeLogger } from "common/logger";
 import { Signin, Signup } from "components/Authentication";
 import PrivateRoute from "components/Common/PrivateRoute";
 import Dashboard from "components/Dashboard";
@@ -29,13 +30,14 @@ const App = () => {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
+      logger.error(error);
       setLoading(true);
     }
   };
 
   useEffect(() => {
     registerIntercepts();
+    initializeLogger();
     setAuthHeaders();
     fetchUserInfo();
   }, []);

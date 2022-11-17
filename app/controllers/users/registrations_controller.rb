@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < DeviseTokenAuth::RegistrationsController
+  prepend DeviseTokenRegistrationResponseOverride
+
   private
 
     def sign_up_params
